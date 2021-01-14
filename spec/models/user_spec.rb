@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'validates uniqueness of name' do
-      User.create!(name: subject.name.upcase)
+      described_class.create!(name: subject.name.upcase)
 
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to eq ['Name has already been taken']
