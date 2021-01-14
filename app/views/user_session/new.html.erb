@@ -1,10 +1,7 @@
 <div class='d-flex align-items-center vh-100'>
-  <div class='mw-100 m-auto p-3' style="width: 300px;">
-    <h1 class='h3 text-center mb-3'>Hotwire Chat</h1>
-
-    <%= form_with model: User.new, url: join_path do |f| %>
-      <%= f.text_field :name, class: 'form-control form-control-lg mb-3', placeholder: 'Enter your name' %>
-      <%= f.submit 'Join chat', class: 'btn btn-primary btn-lg w-100' %>
-    <% end %>
-  </div>
+  <%= form_with model: User.new, url: join_path, class: 'w-galaxy mw-100 m-auto p-3 d-grid gap-3' do |f| %>
+    <h1 class='h3 text-center'>Hotwire Chat</h1>
+    <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: 'Enter your name', required: true, autofocus: true %>
+    <%= f.submit 'Join chat', class: 'btn btn-primary btn-lg w-100' %>
+  <% end %>
 </div>
