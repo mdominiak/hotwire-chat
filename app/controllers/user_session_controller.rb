@@ -6,7 +6,7 @@ class UserSessionController < ApplicationController
     user = User.find_or_create_by(user_session_params)
     if user.persisted?
       session[:current_user_id] = user.id
-      redirect_to root_path
+      redirect_to Room.default_room
     else
       render 'new', status: :unprocessable_entity
     end

@@ -15,13 +15,9 @@ RSpec.describe 'submit join form', type: :request do
     expect(session[:current_user_id]).to eq User.last.id
   end
 
-  it 'creates default room' do
-    pending
-  end
-
-  it 'redirects to root' do
+  it 'redirects to default room' do
     subject
-    expect(response).to redirect_to root_path
+    expect(response).to redirect_to Room.default_room
   end
 
   context 'when invalid user param is submitted' do
@@ -45,15 +41,9 @@ RSpec.describe 'submit join form', type: :request do
       expect(session[:current_user_id]).to eq user.id
     end
 
-    it 'redirects to root' do
+    it 'redirects to default room' do
       subject
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to Room.default_room
     end  
-  end
-
-  context 'when default room exists' do
-    it 'does not create new room' do
-      pending
-    end
   end
 end

@@ -5,7 +5,6 @@ RSpec.describe "visit join page", type: :request do
 
   it 'responds with success' do
     subject
-    
     expect(response).to have_http_status(200)
   end
 end
