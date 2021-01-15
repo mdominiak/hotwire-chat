@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Room, type: :model do
+describe Room, type: :model do
   describe 'validations' do
     subject { described_class.new(name: 'general') }
 

@@ -1,0 +1,10 @@
+<div class='d-flex flex-column vh-100'>
+  <h1 class='pb-2 text-center bg-dark bg-gradient text-white-50'>Welcome <%= current_user.name %> to <%= @room.name %></h1>
+  <div class='flex-grow-1 d-flex flex-column justify-content-end'>
+    <div>Message 1</div>
+    <div>Message 2</div>
+  </div>
+  <%= form_with url: '', class: 'p-3' do |f| %>
+    <%= f.text_field :name, class: 'form-control' %>
+  <% end %>
+</div>

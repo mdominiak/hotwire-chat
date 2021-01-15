@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "visit join page", type: :request do
+describe "visit join page", type: :request do
   subject { get join_path }
 
   it 'responds with success' do
