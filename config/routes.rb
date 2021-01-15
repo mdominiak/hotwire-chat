@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/join', to: 'user_session#new'
   post 'join', to: 'user_session#create'
+  delete '/logout', to: 'user_session#destroy'
 
   root 'home#index'
 end
