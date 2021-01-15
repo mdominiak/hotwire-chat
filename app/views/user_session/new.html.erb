@@ -1,4 +1,4 @@
-<div class='d-flex align-items-center vh-100'>
+<div class='d-flex align-items-center h-100'>
   <%= form_with model: User.new, url: join_path, class: 'w-galaxy mw-100 m-auto p-3 d-grid gap-3' do |f| %>
     <h1 class='h3 text-center'>Hotwire Chat</h1>
     <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: 'Enter your name', required: true, autofocus: true %>
