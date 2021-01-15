@@ -2,6 +2,7 @@ class UserSessionController < ApplicationController
   skip_before_action :authenticate_user, only: %i[ new create destroy ]
 
   def new
+    redirect_to Room.default_room if current_user
   end
 
   def create

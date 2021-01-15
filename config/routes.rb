@@ -4,9 +4,8 @@ Rails.application.routes.draw do
     resources :messages, only: %i[ create ]
   end
 
-  get '/join', to: 'user_session#new'
   post 'join', to: 'user_session#create'
   delete '/logout', to: 'user_session#destroy'
 
-  root 'home#index'
+  root 'user_session#new'
 end
