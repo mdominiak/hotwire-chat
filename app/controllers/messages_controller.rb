@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     message.author = current_user
     message.save!
 
-    redirect_to @room
+    #redirect_to @room
   end
 
   private
