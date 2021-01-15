@@ -7,9 +7,9 @@ describe 'submit message form', type: :request do
   let(:message_params) { { content: 'hi!' } }
   subject { post room_messages_path(room_id: room.id), params: { message: message_params } }
 
-  it 'responds with redirect to room' do
+  it 'responds with success' do
     subject
-    expect(response).to redirect_to room_url(room.id)
+    expect(response).to have_http_status(204)
   end
 
   it 'create new message' do
