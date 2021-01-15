@@ -1,6 +1,8 @@
 class Room < ApplicationRecord
   DEFAULT_NAME = 'general'.freeze
 
+  has_many :messages
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   class << self
