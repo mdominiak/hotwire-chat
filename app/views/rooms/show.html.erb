@@ -10,7 +10,7 @@
     <%= render @messages %>
   </div>
 
-  <%= form_with model: [@room, Message.new], class: 'p-3' do |f| %>
+  <%= form_with model: [@room, Message.new], class: 'px-3 pb-3 pt-2' do |f| %>
     <%= f.text_field :content, class: 'form-control', required: true, autocomplete: 'off', autofocus: true, placeholder: "Message ##{@room.name}" %>
   <% end %>
 </div>
