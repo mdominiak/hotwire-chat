@@ -1,11 +1,11 @@
 <div class='d-flex flex-column vh-100'>
   <h1 class='pb-2 text-center bg-purple text-white-50'>#<%= @room.name %></h1>
   
-  <div class='flex-grow-1 d-flex flex-column overflow-auto message-list'>
+  <div class='flex-grow-1 d-flex flex-column overflow-auto message-list' data-controller='message-list'>
     <%= render @messages %>
   </div>
 
   <%= form_with model: [@room, Message.new], class: 'p-3' do |f| %>
-    <%= f.text_field :content, class: 'form-control', autofocus: true, required: true, placeholder: "Message ##{@room.name}"%>
+    <%= f.text_field :content, class: 'form-control', autofocus: true, required: true, autocomplete: 'off', placeholder: "Message ##{@room.name}" %>
   <% end %>
 </div>
