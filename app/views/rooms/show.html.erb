@@ -1,5 +1,5 @@
 <div class='d-flex flex-column vh-100'>
-  <h1 class='pb-2 text-center bg-dark bg-gradient text-white-50'>Welcome <%= current_user.name %> to <%= @room.name %></h1>
+  <h1 class='pb-2 text-center bg-purple text-white-50'>#<%= @room.name %></h1>
   
   <div class='flex-grow-1 d-flex flex-column overflow-auto message-list'>
     <% @messages.each do |message| %>
@@ -7,8 +7,7 @@
     <% end %>
   </div>
 
-
   <%= form_with model: [@room, Message.new], class: 'p-3' do |f| %>
-    <%= f.text_field :content, class: 'form-control', autofocus: true, required: true %>
+    <%= f.text_field :content, class: 'form-control', autofocus: true, required: true, placeholder: "Message ##{@room.name}"%>
   <% end %>
 </div>
