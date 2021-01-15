@@ -143,6 +143,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -185,9 +186,8 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     tilt (2.0.10)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (0.5.3)
+      rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.1.0)
@@ -217,12 +217,13 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 6.1.1)
+  redis (~> 4.0)
   rspec-rails
   sass-rails (>= 6)
   shoulda-matchers
   spring
   spring-commands-rspec
-  turbolinks (~> 5)
+  turbo-rails
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
