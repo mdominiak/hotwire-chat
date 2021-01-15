@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show ]
 
   def show
-    @messages = @room.messages.order(created_at: :desc)
+    @messages = @room.messages.order(:created_at)
   end
 
   private
