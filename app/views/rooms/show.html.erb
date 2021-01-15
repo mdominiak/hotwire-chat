@@ -2,9 +2,7 @@
   <h1 class='pb-2 text-center bg-purple text-white-50'>#<%= @room.name %></h1>
   
   <div class='flex-grow-1 d-flex flex-column overflow-auto message-list'>
-    <% @messages.each do |message| %>
-      <div><%= h message.content%></div>
-    <% end %>
+    <%= render @messages %>
   </div>
 
   <%= form_with model: [@room, Message.new], class: 'p-3' do |f| %>
