@@ -21,7 +21,7 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "postgres"
         #env:
         #  POSTGRES_USER: myapp
         #  POSTGRES_DB: hotwire_chat_test
