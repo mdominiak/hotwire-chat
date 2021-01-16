@@ -38,6 +38,10 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - uses: actions/cache@v2
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}  
     - name: Install node dependecies
       run: yarn --frozen-lockfile
     - name: Create database
