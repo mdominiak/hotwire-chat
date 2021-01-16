@@ -24,10 +24,6 @@ jobs:
         image: postgres:13
         env:
           POSTGRES_PASSWORD: "postgres"
-        #env:
-        #  POSTGRES_USER: myapp
-        #  POSTGRES_DB: hotwire_chat_test
-        #  POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
@@ -42,10 +38,8 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
-    - name: Check yarn version
-      run: yarn --version
-    - name: Set up node
-      run: yarn
+    - name: Install node dependecies
+      run: yarn --frozen-lockfile
     - name: Create database
       run: RAILS_ENV=test bundle exec rails db:create
     - name: Run tests
