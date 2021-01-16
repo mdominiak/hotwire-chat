@@ -16,6 +16,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432
 
     services:
       postgres:
@@ -40,7 +42,7 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - name: Create database
+      run: RAILS_ENV=test bundle exec rails db:create
     - name: Run tests
       run: bundle exec rspec
-      env:
-        DATABASE_URL: postgres://postgres:postgres@localhost:5432
