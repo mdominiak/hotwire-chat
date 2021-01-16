@@ -6,7 +6,9 @@ class MessagesController < ApplicationController
     message.author = current_user
     message.save!
 
-    #redirect_to @room
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.append(:messages, message) }
+    end
   end
 
   private

@@ -3,7 +3,7 @@
 <div class='d-flex flex-column h-100'>
   <div class='flex-shrink-0 d-flex align-items-center mb-2 bg-purple'>
     <h1 class='flex-grow-1 m-0 p-2 h3 text-center text-white-50'>#<%= @room.name %></h1>
-    <%= link_to 'Logout', logout_path, method: :delete, class: 'link-warning p-2 text-white-50 text-decoration-none' %>
+    <%= link_to 'Logout', logout_path, method: :delete, class: 'p-2 text-white-50 text-decoration-none' %>
   </div>
   
   <div class='flex-grow-1 d-flex flex-column overflow-auto message-list' id='messages' data-controller='message-list' data-action='resize@window->message-list#scrollToBottom'>
