@@ -43,4 +43,4 @@ jobs:
     - name: Run tests
       run: bundle exec rspec
       env:
-        DATABASE_URL: postgres://localhost:5432
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432
