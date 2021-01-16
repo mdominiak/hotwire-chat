@@ -16,8 +16,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: postgres://localhost:5432
 
     services:
       postgres:
@@ -27,6 +25,11 @@ jobs:
         #  POSTGRES_DB: hotwire_chat_test
         #  POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -37,3 +40,5 @@ jobs:
         bundler-cache: true
     - name: Run tests
       run: bundle exec rspec
+      env:
+        DATABASE_URL: postgres://localhost:5432
