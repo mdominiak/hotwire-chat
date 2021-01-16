@@ -37,11 +37,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
+    - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - name: Set up node
+      run: yarn
     - name: Create database
       run: RAILS_ENV=test bundle exec rails db:create
     - name: Run tests
