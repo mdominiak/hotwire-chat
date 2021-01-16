@@ -5,11 +5,13 @@ describe 'submit message form', type: :request do
   let!(:room) { Room.create!(name: 'dev') }
 
   let(:message_params) { { content: 'hi!' } }
-  subject { post room_messages_path(room_id: room.id), params: { message: message_params } }
+  subject { post room_messages_path(room_id: room.id), params: { message: message_params }, headers: turbo_stream_headers }
 
   it 'responds with success' do
     subject
-    expect(response).to have_http_status(204)
+
+    expect(response).to have_http_status(200)
+    assert_select("turbo-stream[action='append'][target='messages']", 1)
   end
 
   it 'create new message' do
