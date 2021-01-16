@@ -17,6 +17,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        #env:
+        #  POSTGRES_USER: myapp
+        #  POSTGRES_DB: hotwire_chat_test
+        #  POSTGRES_PASSWORD: ""
+        ports: ["5432:5432"]
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
