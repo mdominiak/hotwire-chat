@@ -1,7 +1,7 @@
 <%= turbo_stream_from @room %>
 
 <div class='d-flex flex-column h-100'>
-  <div class='d-flex align-items-center mb-2 bg-purple'>
+  <div class='flex-shrink-0 d-flex align-items-center mb-2 bg-purple'>
     <h1 class='flex-grow-1 m-0 p-2 h3 text-center text-white-50'>#<%= @room.name %></h1>
     <%= link_to 'Logout', logout_path, method: :delete, class: 'link-warning p-2 text-white-50 text-decoration-none' %>
   </div>
@@ -10,7 +10,7 @@
     <%= render @messages %>
   </div>
 
-  <%= form_with model: [@room, Message.new], class: 'px-3 pb-3 pt-2', data: { controller: 'message-form', action: 'turbo:submit-end->message-form#resetForm' } do |f| %>
+  <%= form_with model: [@room, Message.new], class: 'flex-shrink-0 px-3 pb-3 pt-2', data: { controller: 'message-form', action: 'turbo:submit-end->message-form#resetForm' } do |f| %>
     <%= f.text_field :content, class: 'form-control', required: true, autocomplete: 'off', autofocus: true, placeholder: "Message ##{@room.name}" %>
   <% end %>
 </div>
