@@ -7,10 +7,11 @@ export default class extends Controller {
       return
     }
 
-    this.scrollToBottom()
+    this.dispatchMessageAdded()
   }
 
-  scrollToBottom() {
-    this.element.parentNode.scrollTop = this.element.parentNode.scrollHeight
+  dispatchMessageAdded() {
+    const event = new CustomEvent('message:added', { bubbles: true })
+    this.element.dispatchEvent(event)
   }
 }
