@@ -12,8 +12,7 @@ jobs:
   rspec:
     runs-on: ubuntu-latest
     env:
-      POSTGRES_PORT: 5432
-      DATABASE_URL: postgres://postgres:postgres@localhost:${{ env.POSTGRES_PORT }}
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432
 
     services:
       postgres:
