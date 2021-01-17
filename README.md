@@ -1,3 +1,1 @@
-# Hotwire Chat
-
-![Test](https://github.com/mdominiak/hotwire-chat/workflows/Test/badge.svg)
+# Hotwire Chat ![rspec](https://github.com/mdominiak/hotwire-chat/workflows/rspec/badge.svg)
