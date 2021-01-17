@@ -1,7 +1,7 @@
 <div class='pb-1 px-3' id="<%= dom_id message %>" data-controller='message'>
   <div>
     <span class='fw-bold'><%= h message.author.name %></span>&nbsp;
-    <span class='fw-light fs-7'><%= h message.created_at.to_s(:short) %></span>
+    <%= local_time message.created_at, format: :short, class: 'fw-light fs-7'%>
   </div>
   <div><%= h message.content%></div>
 </div>

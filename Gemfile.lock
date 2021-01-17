@@ -97,6 +97,7 @@ GEM
     listen (3.4.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    local_time (2.1.0)
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -238,6 +239,7 @@ DEPENDENCIES
   capybara
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  local_time
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 6.1.1)
