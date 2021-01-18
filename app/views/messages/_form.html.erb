@@ -1,0 +1,5 @@
+<%= turbo_frame_tag message, class: 'flex-shrink-0 px-3 pb-3 pt-2' do %>
+  <%= form_with model: [message.room, message], data: { controller: 'message-form', action: 'turbo:submit-end->message-form#resetForm' } do |f| %>
+    <%= f.text_field :content, class: 'form-control', required: true, autocomplete: 'off', autofocus: true, placeholder: "Message ##{message.room.name}" %>
+  <% end %>
+<% end %>

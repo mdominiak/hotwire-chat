@@ -23,7 +23,18 @@ describe 'submit message form', type: :request do
     end
   end
 
-  context 'unauthenticated' do
+  context 'when invalid message param is submitted' do
+    before { message_params[:content] = '' }
+
+    it 'responds with 422' do
+      subject
+
+      expect(response).to have_http_status(422)
+      assert_select 'turbo-frame#new_message', 1
+    end
+  end
+
+  context 'when unauthenticated' do
     let!(:user) { nil }
 
     it 'redirects to join page' do

@@ -11,7 +11,5 @@
     <%= render @messages %>
   </div>
 
-  <%= form_with model: [@room, Message.new], class: 'flex-shrink-0 px-3 pb-3 pt-2', data: { controller: 'message-form', action: 'turbo:submit-end->message-form#resetForm' } do |f| %>
-    <%= f.text_field :content, class: 'form-control', required: true, autocomplete: 'off', autofocus: true, placeholder: "Message ##{@room.name}" %>
-  <% end %>
+  <%= render 'messages/form', message: Message.new(room: @room) %>
 </div>
