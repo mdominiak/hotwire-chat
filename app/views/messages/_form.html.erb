@@ -1,3 +1,10 @@
 <%= form_with model: message.persisted? ? message : [message.room, message], data: { controller: 'form', action: 'turbo:submit-end->form#resetForm' } do |f| %>
   <%= f.text_field :content, class: 'form-control', required: true, autocomplete: 'off', autofocus: true, placeholder: "Message ##{message.room.name}" %>
+
+  <% if message.persisted? %>
+    <div class='pt-2'>
+      <%= link_to 'Cancel', @message, class: 'btn btn-sm btn-outline-secondary' %>
+      <%= f.submit 'Save changes', class: 'btn btn-sm btn-primary'%>
+    <div>
+  <% end %>
 <% end %>
