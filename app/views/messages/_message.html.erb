@@ -3,5 +3,5 @@
     <span class='fw-bold'><%= h message.author.name %></span>&nbsp;
     <%= local_time message.created_at, format: :short, class: 'fw-light fs-7'%>
   </div>
-  <div><%= h message.content%></div>
+  <div><%= format_message_content message.content  %></div>
 </div>

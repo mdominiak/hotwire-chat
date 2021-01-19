@@ -82,14 +82,20 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    commonmarker (0.21.0)
+      ruby-enum (~> 0.5)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.14.2)
+    gemoji (3.0.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    html-pipeline (2.14.0)
+      activesupport (>= 2)
+      nokogiri (>= 1.4)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
@@ -115,6 +121,8 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    nokogumbo (2.0.4)
+      nokogiri (~> 1.8, >= 1.8.4)
     pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.6)
@@ -175,7 +183,13 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.1)
+    ruby-enum (0.8.0)
+      i18n
     rubyzip (2.3.0)
+    sanitize (5.2.3)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.8.0)
+      nokogumbo (~> 2.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -237,6 +251,9 @@ DEPENDENCIES
   bootstrap (~> 5.0.0.beta1)
   byebug
   capybara
+  commonmarker
+  gemoji
+  html-pipeline
   jbuilder (~> 2.7)
   listen (~> 3.3)
   local_time
@@ -245,6 +262,7 @@ DEPENDENCIES
   rails (~> 6.1.1)
   redis (~> 4.0)
   rspec-rails
+  sanitize
   sass-rails (>= 6)
   selenium-webdriver
   shoulda-matchers

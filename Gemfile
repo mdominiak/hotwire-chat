@@ -24,7 +24,11 @@ gem 'redis', '~> 4.0'
 
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'turbo-rails'
-gem 'local_time'
+gem 'local_time' # convert <time> tags to local time on client side
+gem 'commonmarker' # markdown support for html-pipeline
+gem 'gemoji' # emoji support for html-pipeline
+gem 'sanitize' # sanitization support for html-pipeline
+gem 'html-pipeline'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
