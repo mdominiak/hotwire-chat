@@ -11,12 +11,12 @@ describe 'visit room page', type: :request do
     expect(response).to have_http_status(200)
   end
 
-  context 'unauthenticated' do
+  context 'when unauthenticated' do
     let!(:user) { nil }
-
-    it 'redirects to join page' do
+    
+    it 'redirects to root' do
       subject
-      expect(response).to redirect_to join_url
+      expect(response).to redirect_to root_url
     end
   end
 end

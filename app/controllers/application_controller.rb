@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authenticate_user
-    redirect_to join_url unless current_user
+    redirect_to root_url unless current_user
   end
 end

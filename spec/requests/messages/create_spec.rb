@@ -37,9 +37,9 @@ describe 'submit message form', type: :request do
   context 'when unauthenticated' do
     let!(:user) { nil }
 
-    it 'redirects to join page' do
+    it 'redirects to root' do
       subject
-      expect(response).to redirect_to join_url
+      expect(response).to redirect_to root_url
     end
   end
 end
