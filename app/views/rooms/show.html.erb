@@ -11,5 +11,7 @@
     <%= render @messages %>
   </div>
 
-  <%= render 'messages/form', message: Message.new(room: @room) %>
+  <%= turbo_frame_tag @new_message, class: 'flex-shrink-0 px-3 pb-3 pt-2' do %>
+    <%= render 'messages/form', message: @new_message %>
+  <% end %>
 </div>

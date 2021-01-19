@@ -5,6 +5,8 @@ class RoomsController < ApplicationController
     @messages = @room.messages
       .includes(:author)
       .order(:created_at)
+
+    @new_message = Message.new(room: @room)
   end
 
   private
