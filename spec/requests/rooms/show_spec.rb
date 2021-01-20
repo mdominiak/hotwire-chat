@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'visit room page', type: :request do
+describe 'rooms#show', type: :request do
   let!(:user) { log_in('matt') }
   let!(:room) { Room.create!(name: 'dev') }
 

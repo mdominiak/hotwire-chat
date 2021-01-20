@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'submit join form', type: :request do
+describe 'user_session#create', type: :request do
   let(:user_params) { { name: 'matt' } }
   let(:params) { { user: user_params } }
   subject { post join_path, params: params }

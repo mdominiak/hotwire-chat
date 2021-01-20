@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "visit join page", type: :request do
+describe 'user_session#new', type: :request do
   subject { get root_path }
 
   it 'responds with success' do

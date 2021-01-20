@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'logout', type: :request do
+describe 'user_session#destroy', type: :request do
   subject { delete logout_path }
 
   context 'authenticated' do
