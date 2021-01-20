@@ -10,8 +10,9 @@ describe "send message", type: :system do
   it "creates and shows message" do
     log_in(user.name)
 
-    fill_in 'Message #general', with: "**Hotwire** in action :tada:\n"
     expect {
+      fill_in 'Message #general', with: "**Hotwire** in action :tada:\n"
+
       within('#messages') do
         expect(page).to have_content 'Hotwire in action 🎉', count: 1
         expect(page).to have_css 'strong', text: 'Hotwire', count: 1
