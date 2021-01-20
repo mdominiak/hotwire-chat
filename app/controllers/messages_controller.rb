@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_room, only: %i[ create ]
   before_action :set_message, only: %i[ update edit destroy show ]
+  before_action :authorize_message, except: %i[ create ]
 
   def create
     @message = @room.messages.new(message_params)
@@ -39,6 +40,10 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = Message.find(params[:id])
+  end
+
+  def authorize_message
+    authorize @message
   end
 
   def message_params

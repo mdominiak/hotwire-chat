@@ -22,13 +22,14 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap', '~> 5.0.0.beta1'
-gem 'turbo-rails'
+gem 'bootstrap', '~> 5.0.0.beta1' # css framework
+gem 'turbo-rails' # turbo support for rails
 gem 'local_time' # convert <time> tags to local time on client side
 gem 'commonmarker' # markdown support for html-pipeline
 gem 'gemoji' # emoji support for html-pipeline
 gem 'sanitize' # sanitization support for html-pipeline
-gem 'html-pipeline'
+gem 'html-pipeline' # for formatting html
+gem 'pundit' # for authorization
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

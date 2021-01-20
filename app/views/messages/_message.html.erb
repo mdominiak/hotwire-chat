@@ -4,8 +4,8 @@
     <div class='col fw-bold'><%= h message.author.name %></div>
     <div class='col'><%= local_time message.created_at, format: :short, class: 'fw-light fs-7'%></div>
     <div class='col actions invisible' data-message-target='actions'>
-      <%= link_to 'edit', edit_message_path(message), class: 'fs-7 link-secondary' %>
-      <%= link_to 'delete', message_path(message), method: :delete, class: 'fs-7 link-secondary' %>
+      <%= link_to 'edit', edit_message_path(message), class: 'fs-7 link-secondary' if policy(message).update? %>
+      <%= link_to 'delete', message_path(message), method: :delete, class: 'fs-7 link-secondary' if policy(message).destroy? %>
     </div>
   </div>
  

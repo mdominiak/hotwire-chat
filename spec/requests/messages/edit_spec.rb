@@ -17,6 +17,15 @@ describe 'messages#edit', type: :request do
     assert_select("form[action='#{message_path(message)}']", 1)
   end
 
+  context 'when unauthorized' do
+    let!(:current_user) { log_in('unauthorized') }
+
+    it 'responds with forbidden' do
+      subject
+      expect(response).to have_http_status(403)
+    end
+  end
+
   context 'when unauthenticated' do
     let!(:current_user) { nil }
 
