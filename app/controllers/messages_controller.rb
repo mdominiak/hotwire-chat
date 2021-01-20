@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_room, only: %i[ create ]
-  before_action :set_message, only: %i[ update edit show ]
+  before_action :set_message, only: %i[ update edit destroy show ]
 
   def create
     @message = @room.messages.new(message_params)
@@ -22,6 +22,10 @@ class MessagesController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @message.destroy
   end
 
   def show
