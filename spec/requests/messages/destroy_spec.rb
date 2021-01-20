@@ -11,7 +11,7 @@ describe 'messages#destroy', type: :request do
     expect { subject }.to change { Message.count }
   end
 
-  it 'responds with success' do
+  it 'responds with no content' do
     subject
     expect(response).to have_http_status(204)
   end
