@@ -1,13 +1,15 @@
-<%= turbo_frame_tag dom_id(message), class: 'pb-1 px-3',
-    data: { controller: 'message', action: 'mouseout->message#toggleActions mouseover->message#toggleActions', 'message-author-id-value': message.author_id } do %>
-  <div class='row row-cols-auto gx-2'>
-    <div class='col fw-bold'><%= h message.author.name %></div>
-    <div class='col'><%= local_time message.created_at, format: :short, class: 'fw-light fs-7'%></div>
-    <div class='col invisible' data-message-target='actions'>
-      <%= link_to 'edit', edit_message_path(message), class: 'fs-7 link-secondary' %>
-      <%= link_to 'delete', message_path(message), method: :delete, class: 'fs-7 link-secondary' %>
+<% cache message do %>
+  <%= turbo_frame_tag dom_id(message), class: 'pb-1 px-3',
+      data: { controller: 'message', action: 'mouseout->message#toggleActions mouseover->message#toggleActions', 'message-author-id-value': message.author_id } do %>
+    <div class='row row-cols-auto gx-2'>
+      <div class='col fw-bold'><%= h message.author.name %></div>
+      <div class='col'><%= local_time message.created_at, format: :short, class: 'fw-light fs-7'%></div>
+      <div class='col invisible' data-message-target='actions'>
+        <%= link_to 'edit', edit_message_path(message), class: 'fs-7 link-secondary' %>
+        <%= link_to 'delete', message_path(message), method: :delete, class: 'fs-7 link-secondary' %>
+      </div>
     </div>
-  </div>
- 
-  <div class='formatted-content'><%= format_message_content message.content  %></div>
+  
+    <div class='formatted-content'><%= format_message_content message.content  %></div>
+  <% end %>
 <% end %>
