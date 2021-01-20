@@ -1,21 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe "chat", type: :system do
+describe "chat", type: :system do
   before do
     driven_by(:selenium, using: :headless_chrome)
   end
 
+  let!(:user) { User.create(name: 'matt') }
+
   it "shows sent and received messages" do
-    # log in
-    visit root_path
-    fill_in 'Enter your name', with: 'matt'
-    click_on 'Join chat'
-    expect(page).to have_content '#general', count: 1
+    log_in(user.name)
 
     # send message
     fill_in 'Message #general', with: "Hotwire in action!\n"
     within('#messages') do
-      expect(page).to have_content 'Hotwire in action', count: 1
+      expect(page).to have_content 'Hotwire in action!', count: 1
     end
 
     # receive message
