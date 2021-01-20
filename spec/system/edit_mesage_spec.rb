@@ -23,8 +23,15 @@ describe "edit message", type: :system do
 
       expect(page).to have_content 'v2'
       expect(page).to_not have_content 'v1'
-
       expect(message.reload.content).to eq 'v2'
+
+      # edit and cancel
+      find('.formatted-content').hover
+      click_on 'edit'
+      expect(page).to_not have_content 'v2'
+      fill_in "message[content]", with: 'v3'
+      click_on 'Cancel'
+      expect(page).to have_content 'v2'
     end
   end
 end
