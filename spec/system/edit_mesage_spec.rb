@@ -22,6 +22,7 @@ describe "edit message", type: :system do
       click_on 'Save changes'
 
       expect(page).to have_content 'v2'
+      expect(page).to have_content 'edited'
       expect(page).to_not have_content 'v1'
       expect(message.reload.content).to eq 'v2'
 
