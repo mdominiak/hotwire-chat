@@ -8,6 +8,8 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 
 ## Creating message
 
+![create message](/public/messages_create.png)
+
 When message form is submitted, the `POST /rooms/1/messages` endpoint
 
 ```ruby
