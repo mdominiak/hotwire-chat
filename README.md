@@ -32,7 +32,7 @@ returns the following response:
 ```html
 <turbo-frame action="append" target="messages">
   <fragment>
-     <!-- app/views/messages/_message.html.erb partial -->
+    <!-- app/views/messages/_message.html.erb partial -->
     <turbo-frame id="message_367" ...>
       ...
     </turbo-frame>
@@ -43,6 +43,15 @@ returns the following response:
 which is turbo stream action appending html fragment of newly created message to `#messages` container element. DOM updates are automatically handled by Turbo javascript on client side. The `turbo_stream` method used in the controller code is provided by [turbo-rails](https://github.com/hotwired/turbo-rails) gem.
 
 ### Broadacasting created message
+
+When visiting a chat room page `GET /rooms/1`, the client automatically subscribes to the room channel turbo stream via ActionCable web socket. The subscription instruction is included in [rooms/show.html.erb](app/views/rooms/show.html.erb) view rendered by [rooms#show](app/controllers/rooms_controller.rb) action:
+
+```ruby
+# app/views/rooms/show.html.erb
+<%= turbo_stream_from @room %>
+```
+
+All message changes (create, update, destroy) are broadcasted to the message's room channel.
 
 ## Editing message
 
