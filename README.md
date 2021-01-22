@@ -27,10 +27,16 @@ class MessagesController < ApplicationController
 end
 ```
 
-return the following response:
+returns the following response:
 
 ```html
-<turbo-frame target='test'>
+<turbo-frame action="append" target="messages">
+  <fragment>
+     <!-- app/views/messages/_message.html.erb partial -->
+    <turbo-frame id="message_123" ...>
+      ...
+    </turbo-frame>
+  </fragment>
 </turbo-frame>
 ```
 
