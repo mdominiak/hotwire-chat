@@ -10,7 +10,7 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 
 ![create message](/public/messages_create.png)
 
-When message form is submitted to the `POST /rooms/1/messages` endpoint, the `messages#create` controller action
+When message form is submitted to the `POST /rooms/1/messages` endpoint, the [messages#create](app/controllers/messages_controller.rb) controller action
 
 ```ruby
 class MessagesController < ApplicationController
@@ -62,7 +62,7 @@ class Message < ApplicationRecord
 end
 ```
 
-On creating a new message in `messages#create` controller action, turbo stream append action is broadcasted to all message's room subscribers:
+On creating a new message in [messages#create](app/controllers/messages_controller.rb) controller action, turbo stream append action is broadcasted to all message's room subscribers:
 
 The broadcasting is not bound to controller actions only. Any call to `Message.create`, `message.update`, `message.destroy` triggering ActiveRecord callbacks will result in corresponding broadcasts. Particularly, it is possible to trigger broadcasts in the rails console.
 
