@@ -33,7 +33,7 @@ returns the following response:
 <turbo-frame action="append" target="messages">
   <fragment>
      <!-- app/views/messages/_message.html.erb partial -->
-    <turbo-frame id="message_123" ...>
+    <turbo-frame id="message_367" ...>
       ...
     </turbo-frame>
   </fragment>
