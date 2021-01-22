@@ -51,7 +51,20 @@ When visiting a chat room page `GET /rooms/1`, the client automatically subscrib
 <%= turbo_stream_from @room %>
 ```
 
-All message changes (create, update, destroy) are broadcasted to the message's room channel.
+Besides subscription, Turbo will automatically unsubscribe from the channel when navigating away from the room page, for example, when logging out.
+
+All message changes (create, update, destroy) are asynchronously broadcasted to the message's room channel.
+
+```ruby
+# app/models/message.rb
+class Message < ApplicationRecord
+  broadcasts_to :room
+end
+```
+
+On creating a new message in `messages#create` controller action, turbo stream append action is broadcasted to all message's room subscribers:
+
+The broadcasting is not bound to controller actions only. Any call to `Message.create`, `message.update`, `message.destroy` triggering ActiveRecord callbacks will result in corresponding broadcasts. Particularly, it is possible to trigger broadcasts in the rails console.
 
 ## Editing message
 
