@@ -13,14 +13,16 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 When message form is submitted, the `POST /rooms/1/messages` endpoint
 
 ```ruby
-def create
-  @message = @room.messages.new(message_params)
-  @message.author = current_user
+class MessagesController < ApplicationController
+  def create
+    @message = @room.messages.new(message_params)
+    @message.author = current_user
 
-  if @message.save
-    render turbo_stream: turbo_stream.append(:messages, @message)
-  else
-    render 'new', layout: false, status: :unprocessable_entity
+    if @message.save
+      render turbo_stream: turbo_stream.append(:messages, @message)
+    else
+      render 'new', layout: false, status: :unprocessable_entity
+    end
   end
 end
 ```
