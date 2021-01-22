@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     @message.author = current_user
 
     if @message.save
-      render turbo_stream: turbo_stream.append(:messages, @message)
+      render turbo_stream: turbo_stream.append(:messages, @message) # <--
     else
       render 'new', layout: false, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ returns the following response:
 </turbo-frame>
 ```
 
-which is turbo stream action appending created message html fragment to `#messages` container element. DOM updates are automatically handled by Turbo javascript on client side.
+which is turbo stream action appending html fragment of newly created message to `#messages` container element. DOM updates are automatically handled by Turbo javascript on client side. The `turbo_stream` method used in the controller code is provided by [turbo-rails](https://github.com/hotwired/turbo-rails) gem.
 
 ### Broadacasting created message
 
