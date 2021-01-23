@@ -120,8 +120,11 @@ end
 
 On receiving the response containing turbo frame with the matching identifier, Turbo replaces the content of the turbo frame:
 
+![message update](public/messages_update.png)
 
 ### Broadcasting updated message
+
+![message update web socket](public/messages_update_ws.png)
 
 ## Canceling message edit
 
