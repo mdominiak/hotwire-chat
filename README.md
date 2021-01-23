@@ -91,6 +91,15 @@ Turbo javascript automatically detects navigation within turbo frame and transla
 
 ## Updating message
 
+The message edit form is nested under the message turbo frame:
+
+
+When a user submits the form, the `PATCH /messages/371` [messages#update](app/controllers/messages_controller.rb) endpoint returns the turbo frame with the matching identifier containing the updated message html:
+
+
+On receiving the response containing turbo frame with the matching identifier, Turbo replaces the content of the turbo frame:
+
+
 ### Broadcasting updated message
 
 ## Canceling message edit
