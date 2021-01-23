@@ -72,6 +72,8 @@ The broadcasting is not bound to controller actions only. Any call to `Message.c
 
 The edit link is nested under the message turbo frame:
 
+![message edit link](public/messages_edit_link.png)
+
 When a user clicks the link, the `GET /messaged/123/edit` [messages#edit](app/controllers/messages_controller.rb) endpoint returns the turbo frame with the matching identifier containing the message form:
 
 ```ruby
@@ -83,7 +85,7 @@ When a user clicks the link, the `GET /messaged/123/edit` [messages#edit](app/co
 
 On receiving a response containing turbo frame with matching identifier, Turbo replaces the content of the turbo frame:
 
-
+![message edit](public/messages_edit.png)
 
 ## Updating message
 
