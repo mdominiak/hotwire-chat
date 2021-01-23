@@ -13,6 +13,7 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 When message form is submitted to the `POST /rooms/1/messages` endpoint, the [messages#create](app/controllers/messages_controller.rb) controller action
 
 ```ruby
+# app/controllers/messages_controller.rb
 class MessagesController < ApplicationController
   def create
     @message = @room.messages.new(message_params)
@@ -46,8 +47,8 @@ which is turbo stream action appending html fragment of newly created message to
 
 When visiting a chat room page `GET /rooms/1`, the client automatically subscribes to the room channel turbo stream via ActionCable web socket. The subscription instruction is included in [rooms/show.html.erb](app/views/rooms/show.html.erb) view rendered by [rooms#show](app/controllers/rooms_controller.rb) action:
 
-```ruby
-# app/views/rooms/show.html.erb
+```erb
+<!-- app/views/rooms/show.html.erb -->
 <%= turbo_stream_from @room %>
 ```
 
@@ -76,8 +77,8 @@ The edit link is nested under the message turbo frame:
 
 When a user clicks the link, the `GET /messages/371/edit` [messages#edit](app/controllers/messages_controller.rb) endpoint returns the turbo frame with the matching identifier containing the message form:
 
-```ruby
-# app/views/messages/edit.html.erb
+```erb
+<!-- app/views/messages/edit.html.erb -->
 <%= turbo_frame_tag dom_id(@message) do %>
   <%= render 'form', message: @message %>
 <% end %>
@@ -93,9 +94,29 @@ Turbo javascript automatically detects navigation within turbo frame and transla
 
 The message edit form is nested under the message turbo frame:
 
+![message edit form](public/messages_edit_form.png)
 
-When a user submits the form, the `PATCH /messages/371` [messages#update](app/controllers/messages_controller.rb) endpoint returns the turbo frame with the matching identifier containing the updated message html:
+When a user submits the form, the `PATCH /messages/371` [messages#update](app/controllers/messages_controller.rb) endpoint renders the turbo frame with the matching identifier containing the html of the updated message:
 
+```ruby
+# app/controllers/messages_controller.rb
+class MessagesController < ApplicationController
+  def update
+    if @message.update(message_params)
+      render @message # renders app/views/messages/_message.html.erb partial
+    else
+      render 'edit', layout: false, status: :unprocessable_entity
+    end
+  end
+end
+```
+
+```erb
+<!-- app/views/messages/_message.html.erb -->
+<%= turbo_frame_tag dom_id(message) do %>
+  ...
+<% end %>
+```
 
 On receiving the response containing turbo frame with the matching identifier, Turbo replaces the content of the turbo frame:
 
