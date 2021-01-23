@@ -128,6 +128,8 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ## Canceling message edit
 
+![cancel message edit](public/messages_edit_cancel_link.png)
+
 ## Deleting message
 
 ### Broadcasting deleted message
