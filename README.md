@@ -70,6 +70,21 @@ The broadcasting is not bound to controller actions only. Any call to `Message.c
 
 ## Editing message
 
+The edit link is nested under the message turbo frame:
+
+When a user clicks the link, the `GET /messaged/123/edit` [messages#edit](app/controllers/messages_controller.rb) endpoint returns the turbo frame with the matching identifier containing the message form:
+
+```ruby
+# app/views/messages/edit.html.erb
+<%= turbo_frame_tag dom_id(@message) do %>
+  <%= render 'form', message: @message %>
+<% end %>
+```
+
+On receiving a response containing turbo frame with matching identifier, Turbo replaces the content of the turbo frame:
+
+
+
 ## Updating message
 
 ### Broadcasting updated message
