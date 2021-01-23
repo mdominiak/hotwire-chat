@@ -134,6 +134,8 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ## Deleting message
 
-### Broadcasting deleted message
+![delete message link](public/messages_delete_link.png)
+
+### Broadcasting destroyed message
 
 # Testing
