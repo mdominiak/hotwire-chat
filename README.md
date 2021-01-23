@@ -140,6 +140,12 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ### Broadcasting destroyed message
 
+![delete message web socket](public/messages_delete_ws.png)
+
 ## Caching
 
+TBD
+
 ## Testing
+
+TBD
