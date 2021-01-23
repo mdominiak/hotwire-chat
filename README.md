@@ -128,7 +128,9 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ## Canceling message edit
 
-![cancel message edit](public/messages_edit_cancel_link.png)
+![cancel message edit link](public/messages_edit_cancel_link.png)
+
+![cancel message edit](public/messages_edit_cancel.png)
 
 ## Deleting message
 
