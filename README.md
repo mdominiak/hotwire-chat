@@ -14,10 +14,10 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 * [Updating message](#updating-message)
   * [Broadcasting updated message](#broadcasting-updated-message)
 * [Cancelling message edit](#cancelling-message-edit)
-* [Destroying message][#destroying-message]
-  * [Broadcasting destroyed message][#broadcasting-destroyed-message]
-* [Caching]
-* [Testing]
+* [Destroying message](#destroying-message)
+  * [Broadcasting destroyed message](#broadcasting-destroyed-message)
+* [Caching](#caching)
+* [Testing](#testing)
 
 ## Creating message
 
