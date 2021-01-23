@@ -138,4 +138,6 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ### Broadcasting destroyed message
 
-# Testing
+## Caching
+
+## Testing
