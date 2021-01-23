@@ -6,6 +6,19 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 
 ![Hotwire Chat Demo](public/chat.gif)
 
+## Table of Contents
+
+* [Creating message](#creating-message)
+  * [Broadcasting created message](#broadcasting-created-message)
+* [Editing message](#editing-message)
+* [Updating message](#updating-message)
+  * [Broadcasting updated message](#broadcasting-updated-message)
+* [Cancelling message edit](#cancelling-message-edit)
+* [Destroying message][#destroying-message]
+  * [Broadcasting destroyed message][#broadcasting-destroyed-message]
+* [Caching]
+* [Testing]
+
 ## Creating message
 
 ![create message](/public/messages_create.png)
@@ -43,7 +56,7 @@ returns the following response:
 
 which is turbo stream action appending html fragment of newly created message to `#messages` container element. DOM updates are automatically handled by Turbo javascript on client side. The `turbo_stream` method used in the controller code is provided by [turbo-rails](https://github.com/hotwired/turbo-rails) gem.
 
-### Broadacasting created message
+### Broadcasting created message
 
 When visiting a chat room page `GET /rooms/1`, the client automatically subscribes to the room channel turbo stream via ActionCable web socket. The subscription instruction is included in [rooms/show.html.erb](app/views/rooms/show.html.erb) view rendered by [rooms#show](app/controllers/rooms_controller.rb) action:
 
@@ -126,13 +139,13 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ![message update web socket](public/messages_update_ws.png)
 
-## Canceling message edit
+## Cancelling message edit
 
 ![cancel message edit link](public/messages_edit_cancel_link.png)
 
 ![cancel message edit](public/messages_edit_cancel.png)
 
-## Deleting message
+## Destroying message
 
 ![delete message link](public/messages_delete_link.png)
 
