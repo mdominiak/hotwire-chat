@@ -18,6 +18,8 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
   * [Broadcasting destroyed message](#broadcasting-destroyed-message)
 * [Caching](#caching)
 * [Testing](#testing)
+  * [Request specs](#request-specs)
+  * [System specs](#system-specs)
 
 ## Creating message
 
@@ -170,6 +172,7 @@ TBD
 System specs (aka system tests) are `driven_by(:selenium, using: :headless_chrome)` and do not require extra configuration for turbo stream actions delivered over web socket. For example [spec/system/receive_message_spec.rb](spec/system/receive_message_spec.rb) tests user receiving turbo stream append action over the action cable web socket when message is sent by other chat participant:
 
 ```ruby
+# spec/system/receive_message_spec.rb
 require 'rails_helper'
 
 describe "receive message", type: :system do
