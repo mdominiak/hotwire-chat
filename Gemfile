@@ -28,8 +28,9 @@ gem 'local_time' # convert <time> tags to local time on client side
 gem 'commonmarker' # markdown support for html-pipeline
 gem 'gemoji' # emoji support for html-pipeline
 gem 'sanitize' # sanitization support for html-pipeline
-gem 'html-pipeline' # for formatting html
-gem 'pundit' # for authorization
+gem 'html-pipeline' # formatting html
+gem 'pundit' # authorization
+gem 'rollbar' # error logging
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
