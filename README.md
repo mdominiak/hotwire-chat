@@ -159,9 +159,13 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ## Caching
 
-TBD
+
 
 ## Testing
+
+```
+bundle exec rspec
+```
 
 ### Request specs
 
