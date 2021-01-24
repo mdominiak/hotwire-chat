@@ -201,6 +201,9 @@ and on the subsequent vist:
 Rendered collection of messages/_message.html.erb [100 / 100 cache hits] (Duration: 23.7ms | Allocations: 6292)
 ```
 
+### Local time
+
+
 ## Testing
 
 ```
