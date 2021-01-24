@@ -159,7 +159,47 @@ On receiving the response containing turbo frame with the matching identifier, T
 
 ## Caching
 
+One of the key advantages of building modern web applications with Hotwire is server-side rendered views, which can be efficiently cached to reduce rendering time.
 
+The demo app renders message content with [html-pipeline](https://github.com/gjtorikian/html-pipeline) transforming raw text with various filters like markdown, sanitization, emoji into `html_safe` formatted content:
+
+```ruby
+# app/services/html_formatter.rb
+class HtmlFormatter
+  class << self
+    def call(content)
+      pipeline.call(content)[:output].to_s.html_safe
+    end
+
+    private 
+
+      def pipeline
+        @pipeline ||= HTML::Pipeline.new([
+          HTML::Pipeline::MarkdownFilter,
+          HTML::Pipeline::SanitizationFilter,
+          UnicodeEmojiFilter
+        ])
+      end
+  end
+end
+```
+
+The cost of rendering messages on `GET /rooms/1` page can be optimized by caching the messages:
+```erb
+<!-- app/views/rooms/show.html.erb -->
+<%= render partial: 'messages/message', collection: @messages, cached: true %>
+```
+
+which can be observed in the rails log as follows:
+```
+Rendered collection of messages/_message.html.erb [4 / 100 cache hits] (Duration: 221.3ms | Allocations: 62880)
+```
+
+and on the subsequent vist:
+
+```
+Rendered collection of messages/_message.html.erb [100 / 100 cache hits] (Duration: 23.7ms | Allocations: 6292)
+```
 
 ## Testing
 
