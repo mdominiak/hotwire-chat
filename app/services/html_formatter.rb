@@ -6,12 +6,12 @@ class HtmlFormatter
 
     private 
 
-    def pipeline
-      @pipeline ||= HTML::Pipeline.new([
-        HTML::Pipeline::MarkdownFilter,
-        HTML::Pipeline::SanitizationFilter,
-        UnicodeEmojiFilter
-      ])
-    end
+      def pipeline
+        @pipeline ||= HTML::Pipeline.new([
+          HTML::Pipeline::MarkdownFilter,
+          HTML::Pipeline::SanitizationFilter,
+          UnicodeEmojiFilter
+        ])
+      end
   end
 end
