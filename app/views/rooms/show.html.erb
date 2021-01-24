@@ -7,7 +7,7 @@
   </div>
   
   <div class='flex-grow-1 d-flex flex-column overflow-auto message-list' id='messages'
-      data-controller='message-list' data-action='resize@window->message-list#scrollToBottom message:added->message-list#scrollToBottom'>
+      data-controller='message-list' data-action='resize@window->message-list#scrollToBottom'>
     <%= render partial: 'messages/message', collection: @messages, cached: true %>
   </div>
 
