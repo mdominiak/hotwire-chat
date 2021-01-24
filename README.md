@@ -1,6 +1,6 @@
 # Hotwire Chat
 
-![rspec](https://github.com/mdominiak/hotwire-chat/workflows/rspec/badge.svg)
+[![rspec](https://github.com/mdominiak/hotwire-chat/workflows/rspec/badge.svg)](https://github.com/mdominiak/hotwire-chat/actions)
 
 Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.dev).<br />The demo is available at: https://hotwired-chat.herokuapp.com
 
