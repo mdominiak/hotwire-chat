@@ -165,7 +165,65 @@ TBD
 
 ### Request specs
 
+Turbo client-side automatically sets `Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml` header for `fetch` requests originating from it. The header is recognized by `turbo-rails` on the server-side, so it is essential to set this header when writing request specs (aka integration tests) to simulate Turbo requests:
 
+```ruby
+# spec/requets/messages/create_spec.rb
+require 'rails_helper'
+
+describe 'messages#create', type: :request do
+  let!(:user) { log_in('matt' )}
+  let!(:room) { Room.create!(name: 'dev') }
+
+  let(:message_params) { { content: 'hi!' } }
+  subject { post room_messages_path(room_id: room.id), params: { message: message_params }, headers: turbo_stream_headers }
+
+  it 'returns turbo stream appending message' do
+    subject
+
+    expect(response).to have_http_status(200)
+    assert_select("turbo-stream[action='append'][target='messages']", 1)
+  end
+end
+```
+
+where `turbo_stream_headers` is defined as follows:
+
+```ruby
+# spec/support/turbo_stream_spec_support.rb
+module TurboStreamSpecSupport
+  def turbo_stream_headers(headers={})
+    headers.merge('Accept': %i[ turbo_stream html ].map{ |type| Mime[type].to_s }.join(', '))
+  end
+end
+```
+
+Link navigations within turbo frame have the extra `Turbo-Frame: message_371` header passed by Turbo on the client-side. `turbo-rails` also recognizes this header to skip rendering of application layout, so corresponding requests specs should resemble it:
+
+```ruby
+# spec/requests/messages/edit_spec.rb
+require 'rails_helper'
+
+describe 'messages#edit', type: :request do
+  let!(:author) { User.create(name: 'matt') }
+  let!(:current_user) { log_in(author.name) }
+  let!(:message) { Message.create!(room: Room.default_room, author: author, content: 'hello') }
+
+  let(:headers) { turbo_stream_headers.merge('Turbo-Frame': "message_#{message.id}") }
+  subject { get edit_message_path(message.id), headers: headers }
+
+  it 'returns turbo frame with message form' do
+    subject
+
+    expect(response).to have_http_status(200)
+    assert_select('body', 0)
+    assert_select("turbo-frame#message_#{message.id}", 1)
+    assert_select("form[action='#{message_path(message)}']", 1)
+  end
+end
+```
+
+See [spec/requests](spec/requests) for more examples.
 
 ### System specs
 
