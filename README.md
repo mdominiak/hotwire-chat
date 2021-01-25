@@ -17,6 +17,7 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 * [Destroying message](#destroying-message)
   * [Broadcasting destroyed message](#broadcasting-destroyed-message)
 * [Caching](#caching)
+  * [Local time](#local-time)
 * [Testing](#testing)
   * [Request specs](#request-specs)
   * [System specs](#system-specs)
@@ -232,6 +233,8 @@ LocalTime.start()
 ```
 bin/rspec
 ```
+
+See [.github/workflows/rspec.yml](.github/workflows/rspec.yml) for example configuration of running tests in [GitHub Actions](https://github.com/mdominiak/hotwire-chat/actions).
 
 ### Request specs
 
