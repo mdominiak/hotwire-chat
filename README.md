@@ -203,11 +203,34 @@ Rendered collection of messages/_message.html.erb [100 / 100 cache hits] (Durati
 
 ### Local time
 
+The demo app displays the message's timestamps in local time zone. In order to keep the message partial cache friendly (independent of time zone context),
+[local_time](https://github.com/basecamp/local_time) gem is used to render the timestamps in UTC on the server-side:
+
+```erb
+<!-- app/views/messages/_message.html.erb -->
+<%= local_time message.created_at, format: :short, class: 'fw-light fs-7' %>
+```
+
+```html
+<time datetime="2021-01-23T18:11:02Z" data-local="time" data-format="%d %b %H:%M">23 Jan 18:11</time>
+```
+
+The timestamps are then converted with [local-time](https://github.com/basecamp/local_time) javascript libary into local time zone:
+
+```javascript
+// app/javascript/application.js
+import LocalTime from 'local-time'
+LocalTime.start()
+```
+
+```html
+<time datetime="2021-01-23T18:11:02Z" class="fw-light fs-7" data-local="time" data-format="%d %b %H:%M" title="January 23, 2021 at 7:11pm CEST" data-localized="" aria-label="23 Jan 19:11">23 Jan 19:11</time>
+```
 
 ## Testing
 
 ```
-bundle exec rspec
+bin/rspec
 ```
 
 ### Request specs
