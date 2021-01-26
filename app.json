@@ -1,0 +1,7 @@
+{
+  "name": "Hotwire Chat Demo",
+  "description": "A demo chat web app built in Ruby on Rails and Hotwire",
+  "repository": "https://github.com/mdominiak/hotwire-chat",
+  "keywords": ["ruby", "rails", "hotwire", "turbo", "stimulus"],
+  "addons": ["heroku-postgresql", "heroku-redis"]
+}

@@ -6,6 +6,8 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 
 ![Hotwire Chat Demo](public/chat.gif)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Table of Contents
 
 * [Creating message](#creating-message)
@@ -21,7 +23,8 @@ Demo chat web application built in Ruby on Rails with [Hotwire](https://hotwire.
 * [Testing](#testing)
   * [Request specs](#request-specs)
   * [System specs](#system-specs)
-
+* [Deploying to Heroku](#deploying-to-heroku)
+  
 ## Creating message
 
 ![create message](/public/messages_create.png)
@@ -327,3 +330,21 @@ end
 ```
 
 See [specs/system](spec/system) directory for more examples.
+
+### Deploying to Heroku
+
+The demo app can be deployed to Heroku for testing on Heroku's limited free tier. The `Deploy to Heroku` button will provision a free Heroku dyno, `heroku-postgresql:free`, and `heroku-redis:free` addons:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+or manually:
+
+```sh
+  $ heroku create
+  $ heroku addons:create heroku-postgresql
+  $ heroku addons:create heroku-redis
+  $ heroku addons:create rollbar # optional step for error tracking (see config/initializers/rollbar.rb)
+  $ heroku config:set WEB_CONCURRENCY=2 # optional step to configure 2 puma worker processes (see config/puma.rb)
+  $ git push heroku master
+  $ heroku open
+```
