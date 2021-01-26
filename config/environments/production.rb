@@ -54,7 +54,12 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   if ENV['REDIS_URL']
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+    config.cache_store = :redis_cache_store, {
+      url: ENV['REDIS_URL'],
+      error_handler: -> (method:, returning:, exception:) {
+        Rollbar.warning(exception, method: method, returning: returning)
+      }
+    }
   end
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
