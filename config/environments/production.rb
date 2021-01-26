@@ -56,6 +56,7 @@ Rails.application.configure do
   if ENV['REDIS_URL']
     config.cache_store = :redis_cache_store, {
       url: ENV['REDIS_URL'],
+      reconnect_attempts: 1,
       error_handler: -> (method:, returning:, exception:) {
         Rollbar.warning(exception, method: method, returning: returning)
       }
