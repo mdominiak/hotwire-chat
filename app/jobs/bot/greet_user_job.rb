@@ -5,11 +5,15 @@ class Bot::GreetUserJob < Bot::BotJob
     Message.create!(
       author: bot_user,
       room: room,
-      content: "Hi **#{user.name}** :wave: Thanks for checking out Hotwire Chat demo. Source code can be found here: https://github.com/mdominiak/hotwire-chat"
+      content: I18n.t('bot.greet', username: user.name, bot_commands: bot_commands)
     )
   end
 
   def new_user?(user)
     !user.messages.exists?
+  end
+
+  def bot_commands
+    Bot::RespondToCommandJob::COMMANDS.map { |command| "`!#{command}`"}.join(', ')
   end
 end

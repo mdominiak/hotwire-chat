@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  bot:
+    greet: "Hi **%{username}** :wave: Thanks for checking out Hotwire Chat demo. Source code can be found here: https://github.com/mdominiak/hotwire-chat Bot commands: %{bot_commands}"
+    commands:
+      ping: "@%{username} pong"
+      hotwire: "This app was built with Hotwire: https://hotwire.dev"

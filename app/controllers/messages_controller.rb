@@ -8,6 +8,8 @@ class MessagesController < ApplicationController
     @message.author = current_user
 
     if @message.save
+      Bot::RespondToCommandJob.set(wait: 1.second).perform_later(@message)
+
       render turbo_stream: turbo_stream.append(:messages, @message)
     else
       render 'new', layout: false, status: :unprocessable_entity
