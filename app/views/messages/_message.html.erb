@@ -9,7 +9,7 @@
     </div>
     <% if message.edited? %>
       <div class='col'>
-        <span class='fw-light fs-7'>edited <%= local_time message.created_at, format: :short %></span>
+        <span class='fw-light fs-7'>edited <%= local_time message.updated_at, format: :short %></span>
       </div>
     <% end %>
     <div class='col invisible' data-message-target='actions'>
