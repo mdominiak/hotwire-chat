@@ -26,7 +26,7 @@ jobs:
       - name: Set up ruby and restore/install gem dependencies
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 2.7.3
           bundler-cache: true
       - name: Restore node dependencies
         uses: actions/cache@v2
