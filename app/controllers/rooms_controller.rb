@@ -4,7 +4,9 @@ class RoomsController < ApplicationController
   def show
     @messages = @room.messages
       .includes(:author)
-      .order(:created_at)
+      .limit(500)
+      .order(created_at: :desc)
+      .reverse
 
     @new_message = Message.new(room: @room)
   end
